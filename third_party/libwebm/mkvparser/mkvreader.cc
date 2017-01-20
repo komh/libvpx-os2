@@ -11,6 +11,8 @@
 
 #include <cassert>
 
+#include <sys/types.h>  // for off_t
+
 namespace mkvparser {
 
 MkvReader::MkvReader() : m_file(NULL), reader_owns_file_(true) {}
