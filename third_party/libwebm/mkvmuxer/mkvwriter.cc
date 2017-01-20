@@ -12,6 +12,8 @@
 #include <share.h>  // for _SH_DENYWR
 #endif
 
+#include <sys/types.h> // for off_t
+
 namespace mkvmuxer {
 
 MkvWriter::MkvWriter() : file_(NULL), writer_owns_file_(true) {}
