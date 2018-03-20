@@ -339,7 +339,12 @@ void PrintTo(const wchar_t* s, ostream* os) {
     *os << "NULL";
   } else {
     *os << ImplicitCast_<const void*>(s) << " pointing to ";
+#ifndef __KLIBC__    
     PrintCharsAsStringTo(s, std::wcslen(s), os);
+#else
+    // OS/2 kLIBC has wcslen(), but it is not in std namespace.
+    PrintCharsAsStringTo(s, ::wcslen(s), os);
+#endif
   }
 }
 #endif  // wchar_t is native
